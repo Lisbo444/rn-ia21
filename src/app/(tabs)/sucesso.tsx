@@ -1,20 +1,21 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Button } from "../componsts/Buttons";
-import { THEME } from "./styles/constants";
+import { Button } from "../../componsts/Buttons";
+import { THEME } from "../../styles/constants";
 
-export default function HomeScreen() {
+export default function Sucessocreen() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <View style={styles.headerContainer}>
-          <Text style={styles.logo}>Devcard</Text>
+          <Text style={styles.title}>Cartão criado com sucesso</Text>
           <Text style={styles.subtitle}>
-            Seu cartão de visita digital dev mobile
+            Seu cartão de visita digital está pronto. Compartilhe com a galera!
           </Text>
         </View>
-        <View>
-          <Button></Button>
+        <View style={styles.footerContainer}>
+          <Button label="Criar outro cartão" variant="primary" />
+          <Button label="Voltar ao início" variant="secondary" />
         </View>
       </View>
     </SafeAreaView>
@@ -30,34 +31,28 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     flexDirection: "column",
+    alignItems: "center",
     justifyContent: "center",
     alignContent: "center",
     height: 720,
   },
-  logo: {
-    color: "#6d0fac33",
+  title: {
+    color: THEME.colors.heading,
     fontWeight: "bold",
-    fontSize: 56,
+    fontSize: THEME.text.heading.h2,
+    width: 200,
+    textAlign: "center",
   },
+
   subtitle: {
-    color: "#631f9133",
+    color: THEME.colors.subtitle,
     fontWeight: "400",
     fontSize: 18,
     width: 200,
     textAlign: "center",
   },
-  buttonContainer: {
-    backgroundColor: THEME.colors.primary,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignContent: "center",
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-    borderRadius: THEME.border.radius.md,
-  },
-  buttonText: {
-    color: THEME.colors.primary_foreground,
-    fontWeight: "800",
-    fontSize: 18,
+  footerContainer: {
+    flexDirection: "column",
+    gap: 12,
   },
 });

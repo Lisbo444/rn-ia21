@@ -1,27 +1,15 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { THEME } from "../../app/styles/constants";
+import { GestureResponderEvent, Text, TouchableOpacity } from "react-native";
+import { styles } from "./styles";
 
-export function Button() {
+type Props = {
+  label: string;
+  variant: "primary" | "secondary" | "outline";
+  onPress?: (event: GestureResponderEvent) => void;
+};
+export function Button({ label, variant = "primary", onPress }: Props) {
   return (
-    <TouchableOpacity style={styles.buttonContainer}>
-      <Text style={styles.buttonText}>Criar meu cartão</Text>
+    <TouchableOpacity onPress={onPress} style={styles[variant].buttonContainer}>
+      <Text style={styles[variant].buttonText}>{label}</Text>
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonContainer: {
-    backgroundColor: THEME.colors.primary,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignContent: "center",
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-    borderRadius: THEME.border.radius.md,
-  },
-  buttonText: {
-    color: THEME.colors.primary_foreground,
-    fontWeight: "800",
-    fontSize: 18,
-  },
-});
